@@ -14,6 +14,24 @@ const Main = styled.main`
     width: 780px;
     display: flex;
     margin: auto;
+    ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(72, 72, 72, 0.213);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #0303032a;
+    border-radius: 10px;
+  }
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
   }
 `;
 
@@ -34,12 +52,6 @@ const NameFil = styled.p`
   font-size: 18px;
   margin-top: 5px;
   font-weight: 700;
-`;
-const MorePopular = styled.p`
-  font-size: 22px;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
-  margin: 10px;
 `;
 
 const DataFil = styled.p`

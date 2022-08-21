@@ -6,13 +6,30 @@ const Main = styled.main`
   display: flex;
   width: 100vw;
   overflow-x: auto;
-  /* background-color: rgba(205, 205, 205, 0.328); */
   margin-top: 15px;
 
   @media (min-width: 780px) {
     width: 780px;
     display: flex;
     margin: auto;
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: rgba(72, 72, 72, 0.213);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #0303032a;
+      border-radius: 10px;
+    }
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
   }
 `;
 
@@ -35,15 +52,12 @@ const NameFil = styled.p`
   font-weight: 700;
 `;
 
-
 const DataFil = styled.p`
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   margin-top: 10px;
   color: grey;
 `;
-
-
 
 const Popular = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
@@ -55,18 +69,15 @@ const Popular = () => {
     return response.json();
   };
 
-
   const { data, status } = useQuery(["popular"], getPopular);
 
   if (status === "loading") {
     return <p>Facundo</p>;
   }
-  console.log(data)
-
+  console.log(data);
 
   return (
     <>
-
       <Main>
         {data.results.map((film) => (
           <Container key={film.id}>

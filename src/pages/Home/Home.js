@@ -14,8 +14,18 @@ const MorePopular = styled.p`
 
 const SectionPopular = styled.section`
   display: flex;
+  margin: auto;
   align-items: center;
   margin-top: 15px;
+  @media (min-width: 780px) {
+    width: 780px;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
+  }
 `;
 
 const Select = styled.select`
@@ -26,11 +36,10 @@ const Select = styled.select`
   border: none;
   background-color: white;
   font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 `;
 
-const Options = styled.option`
-`;
+const Options = styled.option``;
 
 const Home = () => {
   const [valueSelect, setValueSelect] = useState("streaming");
@@ -45,7 +54,6 @@ const Home = () => {
       <Search />
 
       <SectionPopular>
-
         <MorePopular>Mas popular</MorePopular>
         <Select onChange={onChangeValue} defaultValue="streaming">
           <Options value="streaming">Streaming</Options>
