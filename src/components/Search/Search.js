@@ -10,8 +10,103 @@ const Img = styled.img`
   width: 100vw;
   height: 250px;
   z-index: 100;
+  display: flex;
+  margin: auto;
+  @media (min-width: 780px) {
+    width: 780px;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+    height: 350px;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
+    height: 400px;
+  }
 `;
 
+const H2 = styled.h2`
+  font-size: 35px;
+`;
+const H3 = styled.h3`
+  font-size: 25px;
+  margin-top: 10px;
+`;
+const Input = styled.input`
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  width: 80%;
+  outline: none;
+`;
+
+const SectionWelcome = styled.section`
+  position: absolute;
+  top: 10px;
+  font-family: "Roboto", sans-serif;
+  padding: 15px;
+  color: white;
+  z-index: 150;
+
+  @media (min-width: 780px) {
+    width: 780px;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+    top: 30%;
+}
+@media (min-width: 1380px) {
+    width: 1380px;
+    top: 30%;
+  }
+`;
+
+const SentionSearch = styled.form`
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin-top: 15px;
+  border-radius: 30px;
+  width: auto;
+`;
+
+const ToSearch = styled.p`
+  width: 20%;
+  padding: 15px;
+  border-radius: 35px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 28%,
+    rgba(0, 139, 207, 1) 100%
+  );
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+const Container = styled.section`
+  position: relative;
+
+  @media (min-width: 780px) {
+    width: 780px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
+ 
+  }
+`;
 
 
 
@@ -19,8 +114,23 @@ const Search = () => {
   return (
     <>
       <Main>
-        <Img alt="" src={Saul} />
+        <Container>
+          <Img alt="" src={Saul} />
 
+          <SectionWelcome>
+            <H2>Bienvenido</H2>
+
+            <H3>
+              Millones de películas, programas de televisión y personas por
+              descubrir. Explora ahora.
+            </H3>
+
+            <SentionSearch>
+              <Input type={"text"} />
+              <ToSearch>Search</ToSearch>
+            </SentionSearch>
+          </SectionWelcome>
+        </Container>
       </Main>
     </>
   );
