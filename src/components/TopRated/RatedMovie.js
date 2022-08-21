@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import styled from "styled-components";
 import Loader from "../../Loader/Loader";
+import styled from "styled-components";
 
 const Main = styled.main`
   display: flex;
@@ -60,22 +60,24 @@ const DataFil = styled.p`
   color: grey;
 `;
 
-const Popular = () => {
-    var x = Math.floor(Math.random()*150);
+const RatedMovie = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
 
-  const getPopular = async () => {
+  const getRatedMovie = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=${x}`
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&language=en-US&page=1"
     );
+
     return response.json();
   };
 
-  const { data, status } = useQuery(["popular"], getPopular);
+  const { data, status } = useQuery(["ratedmovie"], getRatedMovie);
 
   if (status === "loading") {
-    return <Loader/>
+    return <Loader />;
   }
+
+  console.log(data);
 
   return (
     <>
@@ -92,4 +94,4 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default RatedMovie;

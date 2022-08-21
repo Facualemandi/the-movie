@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Nav from "../../components/Nav/Nav";
 import Popular from "../../components/Popular/Popular";
+import Tv from "../../components/Popular/Tv";
 import Search from "../../components/Search/Search";
-import Tv from "../../components/Tv/Tv";
+import RatedMovie from "../../components/TopRated/RatedMovie";
 
 const MorePopular = styled.p`
   font-size: 22px;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 10px;
+  font-weight: 500;
 `;
 
 const SectionPopular = styled.section`
@@ -44,9 +45,12 @@ const Options = styled.option``;
 const Home = () => {
   const [valueSelect, setValueSelect] = useState("streaming");
 
+
   const onChangeValue = (e) => {
     setValueSelect(e.target.value);
   };
+
+
 
   return (
     <>
@@ -55,7 +59,7 @@ const Home = () => {
 
       <SectionPopular>
         <MorePopular>Mas popular</MorePopular>
-        <Select onChange={onChangeValue} defaultValue="streaming">
+        <Select onChange={onChangeValue} value="streaming">
           <Options value="streaming">Streaming</Options>
           <Options value="tv">On TV</Options>
         </Select>
@@ -65,14 +69,10 @@ const Home = () => {
       {valueSelect === "tv" && <Tv />}
 
       <SectionPopular>
-        <MorePopular>Gratis para ver</MorePopular>
-        <Select onChange={onChangeValue} defaultValue="streaming">
-          <Options value="peliculas">Peliculas</Options>
-          <Options value="freetv">TV</Options>
-        </Select>
+        <MorePopular>Lo mas valorado</MorePopular>
       </SectionPopular>
 
-
+      <RatedMovie />
     </>
   );
 };

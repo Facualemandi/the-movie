@@ -1,8 +1,7 @@
-import React from 'react'
-import {useQuery} from '@tanstack/react-query'
-import styled from 'styled-components';
-import Loader from '../../Loader/Loader';
-
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import styled from "styled-components";
+import Loader from "../../Loader/Loader";
 
 const Main = styled.main`
   display: flex;
@@ -16,17 +15,17 @@ const Main = styled.main`
     display: flex;
     margin: auto;
     ::-webkit-scrollbar {
-    width: 8px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: rgba(72, 72, 72, 0.213);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #0303032a;
-    border-radius: 10px;
-  }
+      width: 8px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: rgba(72, 72, 72, 0.213);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #0303032a;
+      border-radius: 10px;
+    }
   }
   @media (min-width: 1080px) {
     width: 1080px;
@@ -62,31 +61,26 @@ const DataFil = styled.p`
   color: grey;
 `;
 
-
-
 const Tv = () => {
-    const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-    var x = Math.floor(Math.random()*150);
-    
-    const getTv = async () => {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=${x}`
-        );
-        return response.json()
-      };
+  const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+  var x = Math.floor(Math.random() * 150);
 
-      const {data, status} = useQuery(["Tv"], getTv);
+  const getTv = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=${x}`
+    );
+    return response.json();
+  };
 
-      if(status === 'loading'){
-        return  <Loader/>
-      }
+  const { data, status } = useQuery(["Tv"], getTv);
 
-      console.log(data)
-    
+  if (status === "loading") {
+    return <Loader />;
+  }
 
   return (
     <>
-     <Main>
+      <Main>
         {data.results.map((film) => (
           <Container key={film.id}>
             <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
@@ -96,7 +90,7 @@ const Tv = () => {
         ))}
       </Main>
     </>
-  )
-}
+  );
+};
 
-export default Tv
+export default Tv;
