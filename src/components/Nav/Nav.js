@@ -1,4 +1,5 @@
-import React from "react";
+import Hamburger from "hamburger-react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TMDB from "../../images/tmbdlogo.svg";
 
@@ -13,13 +14,14 @@ const Logo = styled.img`
 `;
 
 const SectionOne = styled.section`
-  border: 1px solid red;
   width: 100vw;
   display: flex;
   justify-content: space-between;
   margin: auto;
   @media (min-width: 780px) {
     width: 780px;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   @media (min-width: 1080px) {
     width: 1080px;
@@ -29,37 +31,66 @@ const SectionOne = styled.section`
   }
 `;
 
+const DivBurger = styled.div`
+  margin: 10px;
+  z-index: 500;
+  @media (min-width: 780px) {
+    display: none;
+  }
+`;
+
 const Ul = styled.ul`
   display: flex;
-  color: white;
-  list-style: none;
-  border: 1px solid red;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
+  margin: 10px;
+
+  @media (max-width: 780px) {
+    margin: 0;
+    position: fixed;
+    flex-direction: column;
+    transition: 0.5s;
+    background-color: red;
+    transform: ${({ value }) =>
+      value ? "translateX(30%)" : "translateX(100%)"};
+    width: 100vw;
+    background-color: #0b1b29;
+    z-index: 300;
+  }
 `;
 
 const Li = styled.li`
-  margin-left: 30px;
+  margin: 15px 50px;
+  list-style: none;
+  color: white;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  @media (max-width: 780px) {
+    margin: 15px;
+    padding: 15px;
+  }
 `;
-const DivOne = styled.div`
-  display: flex;
-`;
-
 
 const Nav = () => {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <Navegation>
       <SectionOne>
-        <DivOne>
-          <Logo alt="Tmbd" src={TMDB} />
-          <Ul>
-            <Li>Películas</Li>
-            <Li>TV Shows</Li>
-            <Li>Peoples</Li>
-          </Ul>
-        </DivOne>
+        <Logo alt="" src={TMDB} />
+
+        <Ul value={isOpen}>
+          <Li>Peliculas</Li>
+          <Li>TV show</Li>
+          <Li>People</Li>
+        </Ul>
+
+        <DivBurger>
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+            color="#4FD1C5"
+            size={50}
+          />
+        </DivBurger>
       </SectionOne>
     </Navegation>
   );
