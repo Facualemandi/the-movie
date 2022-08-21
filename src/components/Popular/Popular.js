@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
+import Loader from "../../Loader/Loader";
 
 const Main = styled.main`
   display: flex;
@@ -60,11 +61,12 @@ const DataFil = styled.p`
 `;
 
 const Popular = () => {
+    var x = Math.floor(Math.random()*150);
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
 
   const getPopular = async () => {
     const response = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=1"
+      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=${x}`
     );
     return response.json();
   };
@@ -72,7 +74,7 @@ const Popular = () => {
   const { data, status } = useQuery(["popular"], getPopular);
 
   if (status === "loading") {
-    return <p>Facundo</p>;
+    return <Loader/>
   }
   console.log(data);
 

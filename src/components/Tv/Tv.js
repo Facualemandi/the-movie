@@ -1,6 +1,7 @@
 import React from 'react'
 import {useQuery} from '@tanstack/react-query'
 import styled from 'styled-components';
+import Loader from '../../Loader/Loader';
 
 
 const Main = styled.main`
@@ -65,10 +66,11 @@ const DataFil = styled.p`
 
 const Tv = () => {
     const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+    var x = Math.floor(Math.random()*150);
     
     const getTv = async () => {
         const response = await fetch(
-          "https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=2"
+          `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=${x}`
         );
         return response.json()
       };
@@ -76,7 +78,7 @@ const Tv = () => {
       const {data, status} = useQuery(["Tv"], getTv);
 
       if(status === 'loading'){
-        return <p>Facundo</p>
+        return  <Loader/>
       }
 
       console.log(data)
@@ -88,8 +90,8 @@ const Tv = () => {
         {data.results.map((film) => (
           <Container key={film.id}>
             <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
-            <NameFil>{film.title}</NameFil>
-            <DataFil>{film.release_date}</DataFil>
+            <NameFil>{film.name}</NameFil>
+            <DataFil>{film.first_air_date}</DataFil>
           </Container>
         ))}
       </Main>
