@@ -8,7 +8,7 @@ const Main = styled.main`
 
 const Img = styled.img`
   width: 100vw;
-  height: 250px;
+  height: 300px;
   z-index: 100;
   display: flex;
   margin: auto;
@@ -27,13 +27,20 @@ const Img = styled.img`
 
 const H2 = styled.h2`
   font-size: 35px;
+  @media (min-width: 1080px){
+    font-size: 55px;
+  }
 `;
 const H3 = styled.h3`
   font-size: 25px;
   margin-top: 10px;
+
+  @media (min-width: 1080px){
+    font-size: 35px;
+  }
 `;
 const Input = styled.input`
-  padding: 15px;
+  padding: 10px;
   border-radius: 30px;
   border: none;
   width: 80%;
@@ -53,11 +60,11 @@ const SectionWelcome = styled.section`
   }
   @media (min-width: 1080px) {
     width: 1080px;
-    top: 30%;
+    top: 10%;
 }
 @media (min-width: 1380px) {
     width: 1380px;
-    top: 30%;
+    top: 20%;
   }
 `;
 
@@ -65,7 +72,7 @@ const SentionSearch = styled.form`
   display: flex;
   align-items: center;
   background-color: white;
-  margin-top: 15px;
+  margin-top: 30px;
   border-radius: 30px;
   width: auto;
 `;
