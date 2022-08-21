@@ -1,6 +1,7 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import styled from "styled-components";
+import React from 'react'
+import {useQuery} from '@tanstack/react-query'
+import styled from 'styled-components';
+
 
 const Main = styled.main`
   display: flex;
@@ -34,7 +35,12 @@ const NameFil = styled.p`
   margin-top: 5px;
   font-weight: 700;
 `;
-
+const MorePopular = styled.p`
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  margin: 10px;
+`;
 
 const DataFil = styled.p`
   font-size: 16px;
@@ -45,29 +51,28 @@ const DataFil = styled.p`
 
 
 
-const Popular = () => {
-  const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+const Tv = () => {
+    const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+    
+    const getTv = async () => {
+        const response = await fetch(
+          "https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=2"
+        );
+        return response.json()
+      };
 
-  const getPopular = async () => {
-    const response = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=1"
-    );
-    return response.json();
-  };
+      const {data, status} = useQuery(["Tv"], getTv);
 
+      if(status === 'loading'){
+        return <p>Facundo</p>
+      }
 
-  const { data, status } = useQuery(["popular"], getPopular);
-
-  if (status === "loading") {
-    return <p>Facundo</p>;
-  }
-  console.log(data)
-
+      console.log(data)
+    
 
   return (
     <>
-
-      <Main>
+     <Main>
         {data.results.map((film) => (
           <Container key={film.id}>
             <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
@@ -77,7 +82,7 @@ const Popular = () => {
         ))}
       </Main>
     </>
-  );
-};
+  )
+}
 
-export default Popular;
+export default Tv
