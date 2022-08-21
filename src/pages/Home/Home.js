@@ -63,6 +63,16 @@ const Home = () => {
 
       {valueSelect === "streaming" && <Popular />}
       {valueSelect === "tv" && <Tv />}
+
+      <SectionPopular>
+        <MorePopular>Gratis para ver</MorePopular>
+        <Select onChange={onChangeValue} defaultValue="streaming">
+          <Options value="peliculas">Peliculas</Options>
+          <Options value="freetv">TV</Options>
+        </Select>
+      </SectionPopular>
+
+
     </>
   );
 };
