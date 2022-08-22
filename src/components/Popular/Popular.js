@@ -63,10 +63,11 @@ const DataFil = styled.p`
 const Popular = () => {
     var x = Math.floor(Math.random()*150);
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+  const API_KEY = 'c2b89afaf7bfa26140ce3d2bc5b5d295'
 
   const getPopular = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=${x}`
+      `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=${x}`
     );
     return response.json();
   };

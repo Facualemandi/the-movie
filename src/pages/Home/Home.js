@@ -5,6 +5,7 @@ import Popular from "../../components/Popular/Popular";
 import Tv from "../../components/Popular/Tv";
 import Search from "../../components/Search/Search";
 import RatedMovie from "../../components/TopRated/RatedMovie";
+import Trailers from "../../components/Trailers/Trailers";
 
 const MorePopular = styled.p`
   font-size: 22px;
@@ -45,7 +46,6 @@ const Options = styled.option``;
 const Home = () => {
   const [valueSelect, setValueSelect] = useState("streaming");
 
-
   const onChangeValue = (e) => {
     setValueSelect(e.target.value);
   };
@@ -56,10 +56,9 @@ const Home = () => {
     <>
       <Nav />
       <Search />
-
       <SectionPopular>
         <MorePopular>Mas popular</MorePopular>
-        <Select onChange={onChangeValue} value="streaming">
+        <Select onChange={onChangeValue} defaultValue="streaming">
           <Options value="streaming">Streaming</Options>
           <Options value="tv">On TV</Options>
         </Select>
@@ -71,8 +70,8 @@ const Home = () => {
       <SectionPopular>
         <MorePopular>Lo mas valorado</MorePopular>
       </SectionPopular>
-
       <RatedMovie />
+      <Trailers/>
     </>
   );
 };
