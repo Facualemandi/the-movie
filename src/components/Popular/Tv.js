@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import Loader from "../../Loader/Loader";
+import { NavLink } from "react-router-dom";
 
 const Main = styled.main`
   display: flex;
@@ -61,6 +62,11 @@ const DataFil = styled.p`
   color: grey;
 `;
 
+const NavL = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+`;
+
 const Tv = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
   const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
@@ -83,11 +89,13 @@ const Tv = () => {
     <>
       <Main>
         {data.results.map((film) => (
-          <Container key={film.id}>
-            <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
-            <NameFil>{film.name}</NameFil>
-            <DataFil>{film.first_air_date}</DataFil>
-          </Container>
+         <NavL key={film.id} to={`/movie/${film.id}`}>
+            <Container >
+              <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
+              <NameFil>{film.name}</NameFil>
+              <DataFil>{film.first_air_date}</DataFil>
+            </Container>
+          </NavL>
         ))}
       </Main>
     </>

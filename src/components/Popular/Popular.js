@@ -64,6 +64,7 @@ const NavL = styled(NavLink)`
   text-decoration: none;
   color: black;
 `;
+
 const Popular = () => {
   let X = Math.floor(Math.random() * 150);
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";

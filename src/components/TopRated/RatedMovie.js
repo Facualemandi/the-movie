@@ -77,7 +77,6 @@ const RatedMovie = () => {
     return <Loader />;
   }
 
-  console.log(data);
 
   return (
     <>
