@@ -43,11 +43,9 @@ const Select = styled.select`
   font-family: "Montserrat", sans-serif;
 `;
 
-const DivTrailer = styled.option`
-  position: relative;
-`;
-
 const Home = () => {
+
+
   const [valueSelect, setValueSelect] = useState("streaming");
 
   const onChangeValue = (e) => {

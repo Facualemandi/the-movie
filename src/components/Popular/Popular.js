@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import Loader from "../../Loader/Loader";
+import { NavLink } from "react-router-dom";
 
 const Main = styled.main`
   display: flex;
@@ -59,11 +60,15 @@ const DataFil = styled.p`
   margin-top: 10px;
   color: grey;
 `;
-
+const NavL = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+`;
 const Popular = () => {
-  let X = Math.floor(Math.random()*150);
+  let X = Math.floor(Math.random() * 150);
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-  const API_KEY = 'c2b89afaf7bfa26140ce3d2bc5b5d295'
+  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
+  const API_URL = "https://api.themoviedb.org/3/movie";
 
   const getPopular = async () => {
     const response = await fetch(
@@ -75,18 +80,20 @@ const Popular = () => {
   const { data, status } = useQuery(["popular"], getPopular);
 
   if (status === "loading") {
-    return <Loader/>
+    return <Loader />;
   }
 
   return (
     <>
       <Main>
         {data.results.map((film) => (
-          <Container key={film.id}>
-            <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
-            <NameFil>{film.title}</NameFil>
-            <DataFil>{film.release_date}</DataFil>
-          </Container>
+          <NavL key={film.id} to={`/movie/${film.id}`}>
+            <Container>
+              <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
+              <NameFil>{film.title}</NameFil>
+              <DataFil>{film.release_date}</DataFil>
+            </Container>
+          </NavL>
         ))}
       </Main>
     </>
