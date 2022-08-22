@@ -1,14 +1,15 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
 import styled from "styled-components";
+import Trading from "../../images/trading.svg";
 import Loader from "../../Loader/Loader";
 
 const Main = styled.main`
   display: flex;
   width: 100vw;
   overflow-x: auto;
-  /* background-color: rgba(205, 205, 205, 0.328); */
-  margin-top: 15px;
+  margin-top: 220px;
+  position: relative;
 
   @media (min-width: 780px) {
     width: 780px;
@@ -39,6 +40,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin: 10px;
+  z-index: 300;
 `;
 
 const Image = styled.img`
@@ -61,19 +63,37 @@ const DataFil = styled.p`
   color: grey;
 `;
 
-const Tv = () => {
+const TrendingImage = styled.img`
+  width: max-content;
+  height: 200px;
+  position: absolute;
+  top: 100px;
+  z-index: 100;
+
+  @media (min-width: 780px) {
+    width: 780px;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
+  }
+`;
+
+const TrendingToday = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
   const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
-  let X = Math.floor(Math.random() * 150);
-
-  const getTv = async () => {
+  const getTrengind = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=${X}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
     );
     return response.json();
   };
 
-  const { data, status } = useQuery(["Tv"], getTv);
+  const { data, status } = useQuery(["trending"], getTrengind);
+
+  console.log(data);
 
   if (status === "loading") {
     return <Loader />;
@@ -82,16 +102,17 @@ const Tv = () => {
   return (
     <>
       <Main>
-        {data.results.map((film) => (
-          <Container key={film.id}>
-            <Image alt="" src={`${URL_IMAGE}${film.poster_path}`} />
-            <NameFil>{film.name}</NameFil>
-            <DataFil>{film.first_air_date}</DataFil>
+        {data.results.map((trad) => (
+          <Container key={trad.id}>
+            <Image alt="" src={`${URL_IMAGE}${trad.poster_path}`} />
+            <NameFil>{`${trad.original_title || trad.name}`}</NameFil>
+            <DataFil>{trad.release_date || trad.first_air_date}</DataFil>
           </Container>
         ))}
+        <TrendingImage alt="" src={Trading} />
       </Main>
     </>
   );
 };
 
-export default Tv;
+export default TrendingToday;

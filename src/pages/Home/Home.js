@@ -6,6 +6,7 @@ import Tv from "../../components/Popular/Tv";
 import Search from "../../components/Search/Search";
 import RatedMovie from "../../components/TopRated/RatedMovie";
 import Trailers from "../../components/Trailers/Trailers";
+import TrendingToday from "../../components/Trending/TrendingToday";
 
 const MorePopular = styled.p`
   font-size: 22px;
@@ -41,7 +42,9 @@ const Select = styled.select`
   font-family: "Montserrat", sans-serif;
 `;
 
-const Options = styled.option``;
+const DivTrailer = styled.option`
+  position: relative;
+`;
 
 const Home = () => {
   const [valueSelect, setValueSelect] = useState("streaming");
@@ -50,8 +53,6 @@ const Home = () => {
     setValueSelect(e.target.value);
   };
 
-
-
   return (
     <>
       <Nav />
@@ -59,8 +60,8 @@ const Home = () => {
       <SectionPopular>
         <MorePopular>Mas popular</MorePopular>
         <Select onChange={onChangeValue} defaultValue="streaming">
-          <Options value="streaming">Streaming</Options>
-          <Options value="tv">On TV</Options>
+          <option value="streaming">Streaming</option>
+          <option value="tv">On TV</option>
         </Select>
       </SectionPopular>
 
@@ -70,8 +71,11 @@ const Home = () => {
       <SectionPopular>
         <MorePopular>Lo mas valorado</MorePopular>
       </SectionPopular>
+
       <RatedMovie />
-      <Trailers/>
+      <Trailers />
+
+      <TrendingToday />
     </>
   );
 };

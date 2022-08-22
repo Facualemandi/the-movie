@@ -65,7 +65,10 @@ const DivImg = styled.div`
   }
 `;
 
+
+
 const Trailers = () => {
+
   return (
     <Main>
       <SectionImg>
