@@ -67,7 +67,7 @@ const Popular = () => {
 
   const getPopular = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${X}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`
     );
     return response.json();
   };

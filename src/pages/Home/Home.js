@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Footer from "../../components/Footer/Footer";
 import Nav from "../../components/Nav/Nav";
 import Popular from "../../components/Popular/Popular";
 import Tv from "../../components/Popular/Tv";
@@ -74,8 +75,8 @@ const Home = () => {
 
       <RatedMovie />
       <Trailers />
-
       <TrendingToday />
+      <Footer/>
     </>
   );
 };

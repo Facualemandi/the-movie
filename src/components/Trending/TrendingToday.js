@@ -84,6 +84,7 @@ const TrendingImage = styled.img`
 const TrendingToday = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
   const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
+
   const getTrengind = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
@@ -93,7 +94,6 @@ const TrendingToday = () => {
 
   const { data, status } = useQuery(["trending"], getTrengind);
 
-  console.log(data);
 
   if (status === "loading") {
     return <Loader />;
