@@ -9,6 +9,7 @@ import { AiOutlinePlaySquare } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import YouTube from "react-youtube";
 import Credits from "../../components/Credits/Credits";
+import AllCredits from "../../components/Credits/AllCredits";
 
 const SecondNav = styled.nav`
   height: auto;
@@ -49,7 +50,6 @@ const Main = styled.main`
 const ImgDrop = styled.img`
   width: 100%;
   height: 250px;
-
 
   @media (min-width: 780px) {
     height: 270px;
@@ -255,6 +255,24 @@ const ColorStar = styled(AiFillStar)`
   color: yellow;
 `;
 
+const SectionGenre = styled.section`
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  text-align: center;
+
+  p{
+    margin: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+
+  }
+
+  hr{
+    width: 10px;
+  }
+`;
+
 const Description = () => {
   const [setVideo, setSetVideo] = useState("");
   const [getTrailer, setGetTrailer] = useState(false);
@@ -275,6 +293,8 @@ const Description = () => {
   if (status === "loading") {
     return <p>Cargando...</p>;
   }
+
+  console.log(data);
 
   const numerOne = Number.parseFloat(data.vote_average).toFixed(1);
 
@@ -338,6 +358,15 @@ const Description = () => {
             </div>
           </SectionDescription>
 
+          <SectionGenre>
+            {data.genres.map((gen) => (
+              <>
+              <p key={gen.id}>{gen.name}</p>
+              <hr/>
+              </>
+            ))}
+          </SectionGenre>
+
           <ContainerTrailer value={getTrailer}>
             <ClosedTrailer onClick={closedTrailer} />
             <SectionTrailer>
@@ -349,6 +378,8 @@ const Description = () => {
 
           <Credits />
         </SectionImg>
+
+        <AllCredits />
       </Main>
     </>
   );
