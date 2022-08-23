@@ -55,11 +55,17 @@ const DivUser = styled.div`
 
 const Content = styled.p`
   padding-top: 15px;
-`
+`;
+
+const AllReview = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px;
+  margin-left: 30px;
+`;
 
 const Reviews = () => {
-    
-
   const { id } = useParams();
 
   const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
@@ -78,17 +84,13 @@ const Reviews = () => {
     return <p>Cargando</p>;
   }
 
-
-  
-
   const newData = data.results.splice(1);
-
 
   return (
     <>
       <Main>
         {data.results.map((el) => (
-          <section key={el.id}> 
+          <section key={el.id}>
             <DivContainerUser>
               <Avatar
                 alt=""
@@ -115,7 +117,7 @@ const Reviews = () => {
             </DivContainerUser>
           </section>
         ))}
-        <p onClick={''}>Read All View</p>
+        <AllReview onClick={""}>Read All View</AllReview>
       </Main>
     </>
   );

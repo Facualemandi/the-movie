@@ -12,6 +12,7 @@ import Credits from "../../components/Credits/Credits";
 import AllCredits from "../../components/Credits/AllCredits";
 import Reviews from "../../components/Reviews/Reviews";
 import Footer from "../../components/Footer/Footer";
+import ImageMovie from "../../components/ImageMovie/ImageMovie";
 
 const SecondNav = styled.nav`
   height: auto;
@@ -70,7 +71,7 @@ const ImgPoster = styled.img`
   height: 300px;
   position: absolute;
   top: 20px;
-  left: 30px;
+  left: 10px;
   z-index: 500;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.665);
@@ -388,8 +389,9 @@ const Description = () => {
 
         <AllCredits />
         <Reviews />
+        <ImageMovie/>
       </Main>
-        <Footer/>
+    <Footer/>
     </>
   );
 };
