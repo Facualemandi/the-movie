@@ -50,14 +50,15 @@ const ImgDrop = styled.img`
   width: 100%;
   height: 250px;
 
+
   @media (min-width: 780px) {
     height: 270px;
   }
   @media (min-width: 1080px) {
-    height: 350px;
+    height: 380px;
   }
   @media (min-width: 1380px) {
-    height: 400px;
+    height: 430px;
   }
 `;
 
@@ -73,12 +74,12 @@ const ImgPoster = styled.img`
 
   @media (min-width: 1080px) {
     width: 30%;
-    top: 5px;
+    top: 20px;
     height: 340px;
   }
   @media (min-width: 1380px) {
     width: 25%;
-    top: 5px;
+    top: 20px;
     height: 380px;
   }
 `;
@@ -119,10 +120,10 @@ const DivOpacity = styled.div`
     height: 270px;
   }
   @media (min-width: 1080px) {
-    height: 350px;
+    height: 380px;
   }
   @media (min-width: 1380px) {
-    height: 400px;
+    height: 430px;
   }
 `;
 
@@ -190,6 +191,11 @@ const SectionDescription = styled.section`
   }
 
   @media (min-width: 1080px) {
+    position: absolute;
+    top: 15px;
+    width: max-content;
+    left: 400px;
+    margin: 0 auto;
   }
 `;
 
@@ -236,6 +242,13 @@ const OverView = styled.p`
   padding: 10px;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
+
+  @media (min-width: 1080px) {
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    width: 600px;
+  }
 `;
 
 const ColorStar = styled(AiFillStar)`

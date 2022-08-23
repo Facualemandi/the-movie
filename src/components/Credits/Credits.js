@@ -19,6 +19,17 @@ const Main = styled.main`
   grid-template-columns: repeat(3, 1fr);
   margin: 10px;
 
+  @media (min-width: 1080px){
+    position: absolute;
+    top: 250px;
+    left: 390px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1380px){
+    grid-template-columns: repeat(5, 1fr);
+  }
+
   section {
     margin: 10px;
   }
