@@ -128,7 +128,7 @@ const DivOpacity = styled.div`
 `;
 
 const SectionDescription = styled.section`
-  margin-top: 100px;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -257,19 +257,24 @@ const ColorStar = styled(AiFillStar)`
 
 const SectionGenre = styled.section`
   display: flex;
-  width: 100vw;
+  width: max-content;
   align-items: center;
   text-align: center;
 
-  p{
+  p {
     margin: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
-
   }
 
-  hr{
+  hr {
     width: 10px;
+  }
+
+  @media (min-width: 1080px) {
+    position: absolute;
+    margin-top: 60px;
+    left: 650px;
   }
 `;
 
@@ -361,8 +366,8 @@ const Description = () => {
           <SectionGenre>
             {data.genres.map((gen) => (
               <>
-              <p key={gen.id}>{gen.name}</p>
-              <hr/>
+                <p key={gen.id}>{gen.name}</p>
+                <hr />
               </>
             ))}
           </SectionGenre>
