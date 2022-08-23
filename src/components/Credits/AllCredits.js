@@ -23,6 +23,8 @@ const Main = styled.main`
       box-shadow: 0 0 5px 0 rgba(64, 64, 64, 0.781);
     }
   }
+
+  
 `;
 
 const NameActor = styled.p`
@@ -43,6 +45,23 @@ const TopCast = styled.h3`
   font-family: "Roboto", sans-serif;
   margin: 15px 0 15px 15px;
 `;
+
+const ContainerAllCredits = styled.section`
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 10px;
+      background-color: white;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: white;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgb(34, 193, 195);
+      background: linear-gradient(90deg, rgba(34, 193, 195, 1) 28%, rgba(0, 139, 207, 1) 100% );
+      border-radius: 10px;
+    }
+`
 const AllCredits = () => {
   const { id } = useParams();
   const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
@@ -59,19 +78,17 @@ const AllCredits = () => {
 
   if (status === "loading") {
     return <p>Cargando</p>;
-  } else {
-    console.log(data);
   }
 
   return (
     <>
       <Main>
         <TopCast>Top Billed Cast</TopCast>
-        <section>
+        <ContainerAllCredits>
           {data.cast.map((el) => (
-            <div>
+            <div key={el.id}>
               <Img
-                alt=""
+                alt={el.original_name}
                 src={`${
                   el.profile_path === null
                     ? NotFound
@@ -82,7 +99,7 @@ const AllCredits = () => {
               <Character>{el.character}</Character>
             </div>
           ))}
-        </section>
+        </ContainerAllCredits>
       </Main>
     </>
   );

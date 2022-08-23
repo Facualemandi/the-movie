@@ -42,6 +42,7 @@ const DivBurger = styled.div`
 const Ul = styled.ul`
   display: flex;
   margin: 10px;
+  z-index: 2500;
 
   @media (max-width: 780px) {
     margin: 0;

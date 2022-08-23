@@ -10,6 +10,8 @@ import { AiFillStar } from "react-icons/ai";
 import YouTube from "react-youtube";
 import Credits from "../../components/Credits/Credits";
 import AllCredits from "../../components/Credits/AllCredits";
+import Reviews from "../../components/Reviews/Reviews";
+import Footer from "../../components/Footer/Footer";
 
 const SecondNav = styled.nav`
   height: auto;
@@ -50,6 +52,7 @@ const Main = styled.main`
 const ImgDrop = styled.img`
   width: 100%;
   height: 250px;
+  z-index: 200;
 
   @media (min-width: 780px) {
     height: 270px;
@@ -299,8 +302,6 @@ const Description = () => {
     return <p>Cargando...</p>;
   }
 
-  console.log(data);
-
   const numerOne = Number.parseFloat(data.vote_average).toFixed(1);
 
   const openTrailer = () => {
@@ -320,9 +321,11 @@ const Description = () => {
     height: "450",
   };
 
+
+
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
 
       <SecondNav>
         <p>
@@ -365,10 +368,9 @@ const Description = () => {
 
           <SectionGenre>
             {data.genres.map((gen) => (
-              <>
-                <p key={gen.id}>{gen.name}</p>
-                <hr />
-              </>
+              <section key={gen.id}>
+                <p>{gen.name}</p>
+              </section>
             ))}
           </SectionGenre>
 
@@ -385,7 +387,9 @@ const Description = () => {
         </SectionImg>
 
         <AllCredits />
+        <Reviews />
       </Main>
+        <Footer/>
     </>
   );
 };
