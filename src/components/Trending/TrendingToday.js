@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Trading from "../../images/trading.svg";
 import Loader from "../../Loader/Loader";
@@ -81,6 +82,14 @@ const TrendingImage = styled.img`
   }
 `;
 
+const NavL = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+`;
+
+
+
+
 const TrendingToday = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
   const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
@@ -103,11 +112,13 @@ const TrendingToday = () => {
     <>
       <Main>
         {data.results.map((trad) => (
-          <Container key={trad.id} loading='lazy'>
+          <NavL key={trad.id} to={`/movie/${trad.id}`}>
+          <Container>
             <Image alt="" src={`${URL_IMAGE}${trad.poster_path}`}/>
             <NameFil>{`${trad.original_title || trad.name}`}</NameFil>
             <DataFil>{trad.release_date || trad.first_air_date}</DataFil>
           </Container>
+          </NavL>
         ))}
         <TrendingImage alt="" src={Trading} loading='lazy'/>
       </Main>
