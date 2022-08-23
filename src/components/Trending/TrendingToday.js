@@ -103,13 +103,13 @@ const TrendingToday = () => {
     <>
       <Main>
         {data.results.map((trad) => (
-          <Container key={trad.id}>
-            <Image alt="" src={`${URL_IMAGE}${trad.poster_path}`} />
+          <Container key={trad.id} loading='lazy'>
+            <Image alt="" src={`${URL_IMAGE}${trad.poster_path}`}/>
             <NameFil>{`${trad.original_title || trad.name}`}</NameFil>
             <DataFil>{trad.release_date || trad.first_air_date}</DataFil>
           </Container>
         ))}
-        <TrendingImage alt="" src={Trading} />
+        <TrendingImage alt="" src={Trading} loading='lazy'/>
       </Main>
     </>
   );

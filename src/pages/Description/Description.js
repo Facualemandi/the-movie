@@ -6,7 +6,9 @@ import Nav from "../../components/Nav/Nav";
 import { MdArrowDropDown } from "react-icons/md";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { AiOutlinePlaySquare } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import YouTube from "react-youtube";
+import Credits from "../../components/Credits/Credits";
 
 const SecondNav = styled.nav`
   height: auto;
@@ -86,11 +88,12 @@ const SectionImg = styled.section`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  background-color: #1f1f1f;
+  color: white;
 
   @media (min-width: 780px) {
     width: 780px;
     display: flex;
-    border: 1px solid red;
   }
   @media (min-width: 1080px) {
     width: 1080px;
@@ -126,7 +129,9 @@ const DivOpacity = styled.div`
 const SectionDescription = styled.section`
   margin-top: 100px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
 
   h3 {
@@ -134,7 +139,7 @@ const SectionDescription = styled.section`
     font-family: "Roboto", sans-serif;
     align-items: center;
     font-size: 24px;
-    margin-left: 15px;
+    margin-left: 10px;
 
     span {
       margin-left: 5px;
@@ -146,7 +151,7 @@ const SectionDescription = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px auto;
+    margin: 10px 0px 10px 10px;
     width: 150px;
     height: 50px;
     border-radius: 5px;
@@ -155,6 +160,33 @@ const SectionDescription = styled.section`
     font-family: "Roboto", sans-serif;
     background-color: white;
     border: 1px solid black;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    div {
+      width: max-content;
+      margin-left: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      font-family: "Roboto", sans-serif;
+      background-color: #1f4c71;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }
 
   @media (min-width: 1080px) {
@@ -200,9 +232,14 @@ const IconTrailer = styled(AiOutlinePlaySquare)`
 const OverView = styled.p`
   width: 100%;
   display: flex;
-  margin: 15px auto;
+  margin: 10px auto;
+  padding: 10px;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
+`;
+
+const ColorStar = styled(AiFillStar)`
+  color: yellow;
 `;
 
 const Description = () => {
@@ -226,7 +263,7 @@ const Description = () => {
     return <p>Cargando...</p>;
   }
 
-  console.log(data);
+  const numerOne = Number.parseFloat(data.vote_average).toFixed(1);
 
   const openTrailer = () => {
     const trailer = data.videos.results.find(
@@ -240,22 +277,27 @@ const Description = () => {
     setGetTrailer(false);
   };
 
+  const opts = {
+    width: "450",
+    height: "450",
+  };
+
   return (
     <>
       <Nav />
 
       <SecondNav>
         <p>
-          OverView <MdArrowDropDown />
+          OverView <MdArrowDropDown />{" "}
         </p>
         <p>
-          Media <MdArrowDropDown />
+          Media <MdArrowDropDown />{" "}
         </p>
         <p>
-          Fandom <MdArrowDropDown />
+          Fandom <MdArrowDropDown />{" "}
         </p>
         <p>
-          Share <MdArrowDropDown />
+          Share <MdArrowDropDown />{" "}
         </p>
       </SecondNav>
 
@@ -269,22 +311,30 @@ const Description = () => {
           </DivImagePoster>
 
           <SectionDescription>
-            <h3>
-              {data.original_title} - <span>( {data.release_date} )</span>
-            </h3>
-            <button onClick={openTrailer}>
-              <IconTrailer /> Ver trailer
-            </button>
+            <h3>{data.original_title}</h3>
+
+            <div>
+              <button onClick={openTrailer}>
+                <IconTrailer /> Ver trailer
+              </button>
+
+              <div>
+                <p>{numerOne}</p>
+                <ColorStar />
+              </div>
+            </div>
           </SectionDescription>
 
           <ContainerTrailer value={getTrailer}>
             <ClosedTrailer onClick={closedTrailer} />
             <SectionTrailer>
-              {!getTrailer ? "" : <YouTube videoId={setVideo} />}
+              {!getTrailer ? "" : <YouTube videoId={setVideo} opts={opts} />}
             </SectionTrailer>
           </ContainerTrailer>
 
           <OverView>{data.overview}</OverView>
+
+          <Credits />
         </SectionImg>
       </Main>
     </>

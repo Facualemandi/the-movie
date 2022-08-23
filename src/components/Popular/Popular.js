@@ -17,13 +17,15 @@ const Main = styled.main`
     ::-webkit-scrollbar {
       width: 8px;
       height: 10px;
+      background-color: white;
     }
     ::-webkit-scrollbar-track {
-      background-color: rgba(72, 72, 72, 0.213);
+      background-color: white;
       border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #0303032a;
+      background: rgb(34, 193, 195);
+      background: linear-gradient(90deg, rgba(34, 193, 195, 1) 28%, rgba(0, 139, 207, 1) 100% );
       border-radius: 10px;
     }
   }
