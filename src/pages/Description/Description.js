@@ -55,10 +55,10 @@ const ImgDrop = styled.img`
     height: 270px;
   }
   @media (min-width: 1080px) {
-    height: 380px;
+    height: 450px;
   }
   @media (min-width: 1380px) {
-    height: 430px;
+    height: 450px;
   }
 `;
 
@@ -120,10 +120,10 @@ const DivOpacity = styled.div`
     height: 270px;
   }
   @media (min-width: 1080px) {
-    height: 380px;
+    height: 450px;
   }
   @media (min-width: 1380px) {
-    height: 430px;
+    height: 450px;
   }
 `;
 
