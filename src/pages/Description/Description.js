@@ -204,8 +204,9 @@ const SectionDescription = styled.section`
 `;
 
 const ContainerTrailer = styled.section`
-  position: absolute;
+  position: fixed;
   top: 0px;
+  left: 0px;
   height: 100vh;
   width: 100vw;
   background-color: black;
@@ -225,11 +226,14 @@ const ClosedTrailer = styled(AiOutlineCloseCircle)`
   height: 70px;
   color: white;
   border-radius: 100%;
+  @media (min-width: 1080px) {
+    cursor: pointer;
+  }
 `;
 
 const SectionTrailer = styled.section`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -322,8 +326,6 @@ const Description = () => {
     height: "450",
   };
 
-
-
   return (
     <>
       {/* <Nav /> */}
@@ -375,13 +377,6 @@ const Description = () => {
             ))}
           </SectionGenre>
 
-          <ContainerTrailer value={getTrailer}>
-            <ClosedTrailer onClick={closedTrailer} />
-            <SectionTrailer>
-              {!getTrailer ? "" : <YouTube videoId={setVideo} opts={opts} />}
-            </SectionTrailer>
-          </ContainerTrailer>
-
           <OverView>{data.overview}</OverView>
 
           <Credits />
@@ -389,9 +384,15 @@ const Description = () => {
 
         <AllCredits />
         <Reviews />
-        <ImageMovie/>
+        <ImageMovie />
       </Main>
-    <Footer/>
+      <ContainerTrailer value={getTrailer}>
+        <ClosedTrailer onClick={closedTrailer} />
+        <SectionTrailer>
+          {!getTrailer ? "" : <YouTube videoId={setVideo} opts={opts} />}
+        </SectionTrailer>
+      </ContainerTrailer>
+      <Footer />
     </>
   );
 };
