@@ -16,6 +16,7 @@ const Main = styled.main`
     width: 780px;
     display: flex;
     margin: auto;
+    margin-top: 220px;
     ::-webkit-scrollbar {
       width: 8px;
       height: 10px;
@@ -31,6 +32,7 @@ const Main = styled.main`
   }
   @media (min-width: 1080px) {
     width: 1080px;
+    margin-top: 30px;
   }
   @media (min-width: 1380px) {
     width: 1380px;
