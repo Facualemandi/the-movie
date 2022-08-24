@@ -5,7 +5,8 @@ import styled from "styled-components";
 import NullAvatar from "../../images/ImagenNotFund.jpg";
 import TheAvatar from "../../images/avatar.jpg";
 
-const Main = styled.main``;
+const Main = styled.main`
+`;
 
 const Avatar = styled.img`
   width: 50px;
@@ -15,7 +16,7 @@ const Avatar = styled.img`
 
 const DivContainerUser = styled.div`
   display: flex;
-  margin: 30px;
+  margin: 5px;
   margin-top: 30px;
   padding: 5px;
   border-radius: 5px;
@@ -62,7 +63,7 @@ const AllReview = styled.p`
   font-size: 24px;
   font-weight: bold;
   margin: 15px;
-  margin-left: 30px;
+  margin-left: 10px;
 `;
 
 const Reviews = () => {
@@ -117,7 +118,7 @@ const Reviews = () => {
             </DivContainerUser>
           </section>
         ))}
-        <AllReview onClick={""}>Read All View</AllReview>
+        <AllReview>Read All View</AllReview>
       </Main>
     </>
   );

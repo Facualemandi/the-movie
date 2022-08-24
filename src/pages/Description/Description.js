@@ -16,15 +16,17 @@ import ImageMovie from "../../components/ImageMovie/ImageMovie";
 
 const SecondNav = styled.nav`
   height: auto;
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1f4c71;
   color: white;
   font-family: "Roboto", sans-serif;
+  width: 100vw;
 
   p {
-    margin: 15px;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,10 +61,10 @@ const ImgDrop = styled.img`
     height: 270px;
   }
   @media (min-width: 1080px) {
-    height: 450px;
+    height: 480px;
   }
   @media (min-width: 1380px) {
-    height: 450px;
+    height: 480px;
   }
 `;
 
@@ -124,10 +126,10 @@ const DivOpacity = styled.div`
     height: 270px;
   }
   @media (min-width: 1080px) {
-    height: 450px;
+    height: 480px;
   }
   @media (min-width: 1380px) {
-    height: 450px;
+    height: 480px;
   }
 `;
 
