@@ -120,12 +120,14 @@ const ImageMovie = () => {
     setLogos(true);
     setPosters(false);
   };
+  
 
   return (
     <>
       <Main>
         <SectionBtns>
           <H3>Media</H3>
+          
           <ButtonOne value={backDrops} onClick={getBackdrops}>
             Backdrops
           </ButtonOne>
