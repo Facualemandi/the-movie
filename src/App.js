@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { TheContext } from "./context/context";
 import Description from "./pages/Description/Description";
 import Home from "./pages/Home/Home";
+import Person from "./pages/Person/Person";
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movie/:id" element={<Description/> }/>
+            <Route path="/person/:id/:name" element={<Person/>}/>
           </Routes>
            <ReactQueryDevtools/>
         </QueryClientProvider>

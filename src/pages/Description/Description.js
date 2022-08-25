@@ -294,7 +294,7 @@ const Description = () => {
   const [getTrailer, setGetTrailer] = useState(false);
 
   let { id } = useParams();
-  console.log(id)
+
   const API_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&append_to_response=videos`;
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
   const { data, status } = useReactQuery(`${API_URL}`, id);

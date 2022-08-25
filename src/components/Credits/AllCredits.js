@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useReactQuery } from "../../Hooks/useReactQuery";
 import NotFound from "../../images/ImagenNotFund.jpg";
@@ -24,8 +24,6 @@ const Main = styled.main`
       box-shadow: 0 0 5px 0 rgba(64, 64, 64, 0.781);
     }
   }
-
-  
 `;
 
 const NameActor = styled.p`
@@ -48,26 +46,36 @@ const TopCast = styled.h3`
 `;
 
 const ContainerAllCredits = styled.section`
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 10px;
-      background-color: white;
-    }
-    ::-webkit-scrollbar-track {
-      background-color: white;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgb(34, 193, 195);
-      background: linear-gradient(90deg, rgba(34, 193, 195, 1) 28%, rgba(0, 139, 207, 1) 100% );
-      border-radius: 10px;
-    }
-`
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: white;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(
+      90deg,
+      rgba(34, 193, 195, 1) 28%,
+      rgba(0, 139, 207, 1) 100%
+    );
+    border-radius: 10px;
+  }
+`;
+
+const NavL = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+`;
 const AllCredits = () => {
   const { id } = useParams();
+  console.log(useParams())
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-  const API_URL =`https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295`
-  const { data, status } = useReactQuery(`${API_URL}`,'allcredits')
+  const API_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295`;
+  const { data, status } = useReactQuery(`${API_URL}`, "allcredits");
 
   if (status === "loading") {
     return <p>Cargando</p>;
@@ -79,18 +87,20 @@ const AllCredits = () => {
         <TopCast>Top Billed Cast</TopCast>
         <ContainerAllCredits>
           {data.cast.map((el) => (
-            <div key={el.id}>
-              <Img
-                alt={el.original_name}
-                src={`${
-                  el.profile_path === null
-                    ? NotFound
-                    : `${URL_IMAGE}${el.profile_path}`
-                }`}
-              />
-              <NameActor>{el.original_name}</NameActor>
-              <Character>{el.character}</Character>
-            </div>
+            <NavL key={el.id} to={`/person/${el.id}/${el.name}`}>
+              <div>
+                <Img
+                  alt={el.original_name}
+                  src={`${
+                    el.profile_path === null
+                      ? NotFound
+                      : `${URL_IMAGE}${el.profile_path}`
+                  }`}
+                />
+                <NameActor>{el.original_name}</NameActor>
+                <Character>{el.character}</Character>
+              </div>
+            </NavL>
           ))}
         </ContainerAllCredits>
       </Main>
