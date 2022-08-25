@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import NullAvatar from "../../images/ImagenNotFund.jpg";
 import TheAvatar from "../../images/avatar.jpg";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
-const Main = styled.main`
-`;
+const Main = styled.main``;
 
 const Avatar = styled.img`
   width: 50px;
@@ -68,23 +68,12 @@ const AllReview = styled.p`
 
 const Reviews = () => {
   const { id } = useParams();
-
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
-  const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-
-  const getReviews = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["reviews"], getReviews);
+  const API_URL = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=1`;
+  const { data, status } = useReactQuery(`${API_URL}`, "reviews");
 
   if (status === "loading") {
     return <p>Cargando</p>;
   }
-
   const newData = data.results.splice(1);
 
   return (

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loader/Loader";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const Main = styled.main`
   display: flex;
@@ -72,16 +73,9 @@ const NavL = styled(NavLink)`
 
 const RatedMovie = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+  const API_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=1'
 
-  const getRatedMovie = async () => {
-    const response = await fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&language=en-US&page=1"
-    );
-
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["ratedmovie"], getRatedMovie);
+  const { data, status } = useReactQuery(`${API_URL}`, 'ratedmovie');
 
   if (status === "loading") {
     return <Loader />;

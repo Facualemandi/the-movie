@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const Main = styled.main`
   margin-top: 30px;
@@ -87,23 +88,14 @@ const ImageMovie = () => {
   const [backDrops, setBackDrops] = useState(true);
 
   const { id } = useParams();
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-
-  const getImage = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["image"], getImage);
+  const API_URL = `https://api.themoviedb.org/3/movie/${id}/images?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295`;
+  const { data, status } = useReactQuery(`${API_URL}`, 'images');
 
   if (status === "loading") {
     return <p>Cargando...</p>;
-  } else {
-    console.log(data);
-  }
+  } 
+
 
   const getBackdrops = () => {
     setBackDrops(true);

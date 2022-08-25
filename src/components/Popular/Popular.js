@@ -2,7 +2,8 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import Loader from "../../Loader/Loader";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const Main = styled.main`
   display: flex;
@@ -68,19 +69,11 @@ const NavL = styled(NavLink)`
 `;
 
 const Popular = () => {
-  let X = Math.floor(Math.random() * 150);
+  // let X = Math.floor(Math.random() * 150);
+  console.log(useParams())
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
-  const API_URL = "https://api.themoviedb.org/3/movie";
-
-  const getPopular = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["popular"], getPopular);
+  const API_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=1';
+  const {data, status} = useReactQuery(`${API_URL}`, 'popular');
 
   if (status === "loading") {
     return <Loader />;

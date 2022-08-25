@@ -13,6 +13,7 @@ import AllCredits from "../../components/Credits/AllCredits";
 import Reviews from "../../components/Reviews/Reviews";
 import Footer from "../../components/Footer/Footer";
 import ImageMovie from "../../components/ImageMovie/ImageMovie";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const SecondNav = styled.nav`
   height: auto;
@@ -293,17 +294,10 @@ const Description = () => {
   const [getTrailer, setGetTrailer] = useState(false);
 
   let { id } = useParams();
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
+  console.log(id)
+  const API_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&append_to_response=videos`;
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-
-  const movieDescription = async () => {
-    const response = await fetch(
-      ` https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery([`${id}`], movieDescription);
+  const { data, status } = useReactQuery(`${API_URL}`, id);
 
   if (status === "loading") {
     return <p>Cargando...</p>;

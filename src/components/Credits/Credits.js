@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const Job = styled.p`
   font-family: "Roboto", sans-serif;
@@ -38,16 +39,8 @@ const Main = styled.main`
 
 const Credits = () => {
   const { id } = useParams();
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
-
-  const getCredits = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["credits"], getCredits);
+  const API_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295`
+  const { data, status } = useReactQuery(`${API_URL}`, 'credits')
 
   if (status === "loading") {
     return <p>Cargando</p>;

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 import NotFound from "../../images/ImagenNotFund.jpg";
 
 const Img = styled.img`
@@ -64,17 +65,9 @@ const ContainerAllCredits = styled.section`
 `
 const AllCredits = () => {
   const { id } = useParams();
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-
-  const getAllCredits = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["allCredits"], getAllCredits);
+  const API_URL =`https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295`
+  const { data, status } = useReactQuery(`${API_URL}`,'allcredits')
 
   if (status === "loading") {
     return <p>Cargando</p>;

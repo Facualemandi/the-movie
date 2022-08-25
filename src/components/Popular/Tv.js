@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import Loader from "../../Loader/Loader";
 import { NavLink } from "react-router-dom";
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const Main = styled.main`
   display: flex;
@@ -71,19 +72,11 @@ const NavL = styled(NavLink)`
 `;
 
 const Tv = () => {
+  // let X = Math.floor(Math.random() * 150);
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
-  let X = Math.floor(Math.random() * 150);
+  const API_URL = "https://api.themoviedb.org/3/tv/popular?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295&page=1"
 
-  const getTv = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=${X}`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["Tv"], getTv);
-
+  const { data, status } =useReactQuery(`${API_URL}`, 'tv');
   if (status === "loading") {
     return <Loader />;
   }
