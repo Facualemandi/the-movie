@@ -9,31 +9,35 @@ import MovieCredits from "../../components/MovieCreditsPerson/MovieCredits";
 import Footer from "../../components/Footer/Footer";
 import MoviesPerson from "../../components/MoviesPerson/MoviesPerson";
 
-
 const Main = styled.main`
-width: 100vw;
-display: flex;
-flex-direction: column;
-margin: auto;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 
-
-@media (min-width: 780px){
-   width: 780px;
-}
-@media (min-width: 1080px){
-   width: 1080px;
-}
-@media (min-width: 1380px){
-   width: 1380px;
-}
-`
+  @media (min-width: 780px) {
+    width: 780px;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+    display: flex;
+    flex-direction: row;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
+    display: flex;
+    flex-direction: row;
+  }
+`;
 const Img = styled.img`
-  width: 200px;
-  height: 250px;
+  width: 350px;
+  height: 450px;
   border-radius: 10px;
   display: flex;
-  margin: auto;
-  margin-left: 10px;
+
+  @media (max-width: 390px){
+    width: 95vw;
+  }
   @media (max-width: 360px) {
     margin: auto;
   }
@@ -42,25 +46,25 @@ const Img = styled.img`
 const Key = styled.p`
   margin: 10px;
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 30px;
 `;
 const Value = styled.p`
   margin: 10px;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 const H2 = styled.h2`
   font-family: "Roboto", sans-serif;
-  font-size: 25px;
-  margin: 10px;
+  font-size: 35px;
+  margin: 5px;
   margin-bottom: 20px;
 `;
 const H3 = styled.h2`
   font-family: "Roboto", sans-serif;
-  font-size: 22px;
+  font-size: 25px;
   margin: 10px;
   margin-bottom: 15px;
 `;
@@ -76,8 +80,7 @@ const ContainerPerson = styled.section`
 const SectionPictureRedes = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-top: 25px;
 `;
 
 const Facebook = styled(FaFacebookSquare)`
@@ -96,10 +99,15 @@ const Instagram = styled(FaInstagramSquare)`
   height: 35px;
 `;
 const Biography = styled.p`
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  margin: 10px;
+  margin: 5px;
 `;
+
+const DivConatainer = styled.div`
+overflow-x: auto;
+margin: 10px;
+`
 
 const Person = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
@@ -126,28 +134,33 @@ const Person = () => {
               <Twitter />
               <Instagram />
             </div>
+            <div>
+              <H3>Personal Info</H3>
+              <Key>Know For</Key>
+              <Value>{data.known_for_department}</Value>
+              <Key>Gender</Key>
+              <Value>{data.gender === 1 ? "Female" : "Male"}</Value>
+              <Key>Birthday</Key>
+              <Value>{data.birthday}</Value>
+              <Key>Place of Birth</Key>
+              <Value>{data.place_of_birth}</Value>
+              <Key>Also known as</Key>
+            <Value>{data.also_known_as}</Value>
+            </div>
           </SectionPictureRedes>
-          <div>
-            <H2>{data.name}</H2>
-            <H3>Personal Info</H3>
-            <Key>Know For</Key>
-            <Value>{data.known_for_department}</Value>
-            <Key>Gender</Key>
-            <Value>{data.gender === 1 ? "Female" : "Male"}</Value>
-            <Key>Birthday</Key>
-            <Value>{data.birthday}</Value>
-            <Key>Place of Birth</Key>
-            <Value>{data.place_of_birth}</Value>
-            {/* <Key>Also known as</Key>
-            <Value>{data.also_known_as}</Value> */}
-          </div>
         </ContainerPerson>
-        <Biography>{data.biography}</Biography>
 
-        <MovieCredits/>
-        <MoviesPerson/>
-        <Footer/>
+        <DivConatainer>
+          <H2>{data.name}</H2>
+          <Biography>{data.biography}</Biography>
+          <MovieCredits />
+          <MoviesPerson />
+        </DivConatainer>
+
       </Main>
+
+      
+      <Footer />
     </>
   );
 };

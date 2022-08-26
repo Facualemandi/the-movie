@@ -4,22 +4,35 @@ import styled from "styled-components";
 import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const Container = styled.section`
-  margin: 10px;
-  box-shadow: 0 0 5px 0 rgba(80, 80, 80, 0.285);
+  box-shadow: 0 0 10px 0 rgba(80, 80, 80, 0.185);
   border-radius: 10px;
+  width: 95vw;
+
+  @media (min-width: 1080px){
+    width: auto;
+    margin: 10px;
+  }
 `;
 const Year = styled.p`
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
+
 `;
 
 const Movie = styled.p`
   font-size: 16px;
   font-family: "Roboto", sans-serif;
+  max-width: 100px;
+  width: auto;
+
+  @media (min-width: 400px){
+    max-width: 300px;
+  }
 `;
 const SectionMoviesPerson = styled.section`
   display: flex;
+  width: max-content;
   @media (min-width: 1080px){
     cursor: pointer;
     :hover{
@@ -44,6 +57,7 @@ margin: 10px;
 const NavL = styled(NavLink)`
   text-decoration: none;
   color: black;
+  width: auto;
 `;
 
 const MoviesPerson = () => {
@@ -54,9 +68,8 @@ const MoviesPerson = () => {
 
   if (status === "loading") {
     return <p>Cargando</p>;
-  } else {
-    console.log(data);
-  }
+  } 
+
 
   return (
     <>

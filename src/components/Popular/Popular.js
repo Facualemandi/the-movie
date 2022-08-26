@@ -47,6 +47,8 @@ const Main = styled.main`
   flex-direction: column;
   margin: auto;
   overflow-x: auto;
+
+
   @media (min-width: 780px) {
     width: 780px;
   }
@@ -56,6 +58,7 @@ const Main = styled.main`
   @media (min-width: 1380px) {
     width: 1380px;
   }
+  
   ::-webkit-scrollbar {
     width: 8px;
     height: 10px;

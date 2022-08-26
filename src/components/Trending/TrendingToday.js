@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Trading from "../../images/trading.svg";
 import Loader from "../../Loader/Loader";
 import NotFundImage from '../../images/ImagenNotFund.jpg'
+import { useReactQuery } from "../../Hooks/useReactQuery";
 
 const SectionMovieCredits = styled.section`
   display: flex;
@@ -51,11 +52,14 @@ const Main = styled.main`
   margin: auto;
   overflow-x: auto;
   position: relative;
+  margin-top: 220px;
+  
   @media (min-width: 780px) {
     width: 780px;
   }
   @media (min-width: 1080px) {
     width: 1080px;
+    margin-top: 0 ;
   }
   @media (min-width: 1380px) {
     width: 1380px;
@@ -83,7 +87,6 @@ const Main = styled.main`
 `;
 const ImgTrending = styled.img`
 position: absolute;
-top: 70px;
 z-index: auto;
 `
 
@@ -96,16 +99,8 @@ const DataMovie = styled.p`
 
 const TrendingToday = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
-  const API_KEY = "c2b89afaf7bfa26140ce3d2bc5b5d295";
-
-  const getTrengind = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
-    );
-    return response.json();
-  };
-
-  const { data, status } = useQuery(["trending"], getTrengind);
+  const API_URL = "https://api.themoviedb.org/3/trending/all/day?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295"
+  const {data, status} = useReactQuery([`${API_URL}`],'trending')
 
 
   if (status === "loading") {
