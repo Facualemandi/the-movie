@@ -20,6 +20,14 @@ const Movie = styled.p`
 `;
 const SectionMoviesPerson = styled.section`
   display: flex;
+  @media (min-width: 1080px){
+    cursor: pointer;
+    :hover{
+      transition: 0.5s;
+      background-color: rgba(209, 209, 209, 0.493);
+      box-shadow: 0 0 5px 0 rgba(119, 119, 119, 0.287);
+    }
+  }
   p {
     margin: 10px;
   }
@@ -29,9 +37,9 @@ const SectionMoviesPerson = styled.section`
   }
 `;
 const H3 = styled.h3`
-  margin: 10px;
-  font-size: 22px;
-  font-family: "Roboto", sans-serif;
+font-family: 'Roboto', sans-serif;
+font-size: 28px;
+margin: 10px;
 `;
 const NavL = styled(NavLink)`
   text-decoration: none;

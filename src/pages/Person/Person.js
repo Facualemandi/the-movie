@@ -15,6 +15,8 @@ width: 100vw;
 display: flex;
 flex-direction: column;
 margin: auto;
+
+
 @media (min-width: 780px){
    width: 780px;
 }

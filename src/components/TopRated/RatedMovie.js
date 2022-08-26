@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Loader/Loader";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
@@ -10,7 +9,6 @@ const Main = styled.main`
   width: 100vw;
   overflow-x: auto;
   margin-top: 15px;
-
   @media (min-width: 780px) {
     width: 780px;
     display: flex;
@@ -44,13 +42,26 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin: 10px;
+  max-width: 200px;
+
 `;
 
 const Image = styled.img`
-  width: 160px;
-  height: 230px;
-  border-radius: 10px;
-`;
+width: 190px;
+height: 230px;
+border-radius: 10px;
+
+
+@media (min-width: 1080px){
+    cursor: pointer;
+    :hover{
+      box-shadow: 0 0 8px 0 rgba(119, 119, 119, 0.987);
+      width: 195px;
+      height: 235px;
+      transition: 0.3s;
+    }
+  }
+`
 
 const NameFil = styled.p`
   font-family: "Roboto", sans-serif;
