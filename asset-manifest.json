@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/the-movie/static/css/main.5f39912b.css",
-    "main.js": "/the-movie/static/js/main.fd8f8671.js",
+    "main.js": "/the-movie/static/js/main.199d21f0.js",
     "static/media/saul.jpg": "/the-movie/static/media/saul.9cf20268d6c09aa5dde2.jpg",
     "static/media/videoImg.jpg": "/the-movie/static/media/videoImg.8ec1d0cc6d23fd3284e9.jpg",
     "static/media/avatar.jpg": "/the-movie/static/media/avatar.c543c8fbf9ad724dfa10.jpg",
@@ -10,10 +10,10 @@
     "static/media/tmbdlogo.svg": "/the-movie/static/media/tmbdlogo.bf7f470b3821af1da7fa249c87dadea3.svg",
     "index.html": "/the-movie/index.html",
     "main.5f39912b.css.map": "/the-movie/static/css/main.5f39912b.css.map",
-    "main.fd8f8671.js.map": "/the-movie/static/js/main.fd8f8671.js.map"
+    "main.199d21f0.js.map": "/the-movie/static/js/main.199d21f0.js.map"
   },
   "entrypoints": [
     "static/css/main.5f39912b.css",
-    "static/js/main.fd8f8671.js"
+    "static/js/main.199d21f0.js"
   ]
 }
