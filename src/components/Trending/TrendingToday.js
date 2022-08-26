@@ -4,92 +4,94 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Trading from "../../images/trading.svg";
 import Loader from "../../Loader/Loader";
+import NotFundImage from '../../images/ImagenNotFund.jpg'
 
-const Main = styled.main`
+const SectionMovieCredits = styled.section`
   display: flex;
-  width: 100vw;
   overflow-x: auto;
-  margin-top: 220px;
-  position: relative;
+  margin: auto;
+`;
+const Img = styled.img`
+  width: 170px;
+  height: 230px;
+  border-radius: 10px;
+  z-index: 200;
 
-  @media (min-width: 780px) {
-    width: 780px;
-    display: flex;
-    margin: auto;
-    margin-top: 220px;
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background-color: rgba(72, 72, 72, 0.213);
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: #0303032a;
-      border-radius: 10px;
-    }
-  }
   @media (min-width: 1080px) {
-    width: 1080px;
-    margin-top: 30px;
-  }
-  @media (min-width: 1380px) {
-    width: 1380px;
+    cursor: pointer;
+    :hover {
+      box-shadow: 0 0 8px 0 rgba(119, 119, 119, 0.987);
+      width: 175px;
+      height: 235px;
+      transition: 0.3s;
+    }
   }
 `;
-
-const Container = styled.section`
+const DivMovie = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
-  z-index: 300;
+  max-width: 170px;
+  margin-bottom: 10px;
 `;
-
-const Image = styled.img`
-  width: 160px;
-  height: 230px;
-  border-radius: 10px;
-`;
-
-const NameFil = styled.p`
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  margin-top: 5px;
-  font-weight: 700;
-`;
-
-const DataFil = styled.p`
+const NameMovie = styled.p`
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   margin-top: 10px;
-  color: grey;
+  font-weight: bold;
 `;
-
-const TrendingImage = styled.img`
-  width: max-content;
-  height: 200px;
-  position: absolute;
-  top: 100px;
-  z-index: 100;
-
-  @media (min-width: 780px) {
-    width: 780px;
-  }
-  @media (min-width: 1080px) {
-    width: 1080px;
-  }
-  @media (min-width: 1380px) {
-    width: 1380px;
-  }
-`;
-
 const NavL = styled(NavLink)`
   text-decoration: none;
   color: black;
 `;
 
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  overflow-x: auto;
+  position: relative;
+  @media (min-width: 780px) {
+    width: 780px;
+  }
+  @media (min-width: 1080px) {
+    width: 1080px;
+  }
+  @media (min-width: 1380px) {
+    width: 1380px;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: white;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(72, 72, 72, 0.213);
+    border-radius: 10px;
+    background-color: white;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(
+      90deg,
+      rgba(34, 193, 195, 1) 28%,
+      rgba(0, 139, 207, 1) 100%
+    );
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+`;
+const ImgTrending = styled.img`
+position: absolute;
+top: 70px;
+z-index: auto;
+`
 
+const DataMovie = styled.p`
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
+`
 
 
 const TrendingToday = () => {
@@ -113,19 +115,26 @@ const TrendingToday = () => {
   return (
     <>
       <Main>
-        {data.results.map((trad) => (
-          <NavL key={trad.id} to={`/movie/${trad.id}`}>
-          <Container>
-            <Image alt="" src={`${URL_IMAGE}${trad.poster_path}`}/>
-            <NameFil>{`${trad.original_title || trad.name}`}</NameFil>
-            <DataFil>{trad.release_date || trad.first_air_date}</DataFil>
-          </Container>
-          </NavL>
-        ))}
-        <TrendingImage alt="" src={Trading} loading='lazy'/>
+        <SectionMovieCredits>
+          {data.results.map((movie) => (
+            <NavL key={movie.id} to={`/movie/${movie.id}`}>
+              <DivMovie>
+                <Img
+                  alt={movie.original_title}
+                  src={movie.poster_path ? `${URL_IMAGE}${movie.poster_path}` : NotFundImage } />
+                <NameMovie>{`${movie.original_title || movie.name}`}</NameMovie>
+                <DataMovie>{movie.release_date || movie.first_air_date}</DataMovie>
+              </DivMovie>
+            </NavL>
+          ))}
+        </SectionMovieCredits>
+        
+        
+        <ImgTrending alt="" src={Trading}/>
       </Main>
     </>
   );
 };
 
 export default TrendingToday;
+
