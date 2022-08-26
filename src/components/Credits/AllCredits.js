@@ -6,7 +6,7 @@ import { useReactQuery } from "../../Hooks/useReactQuery";
 import NotFound from "../../images/ImagenNotFund.jpg";
 
 const Img = styled.img`
-  width: 170px;
+  width: 100%;
   height: 200px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -22,6 +22,10 @@ const Main = styled.main`
       margin: 10px;
       border-radius: 15px;
       box-shadow: 0 0 5px 0 rgba(64, 64, 64, 0.781);
+      min-width: 200px;
+      max-width: 250px;
+      height: auto;
+      min-height: 280px;
     }
   }
 `;
@@ -31,12 +35,14 @@ const NameActor = styled.p`
   font-family: "Roboto", sans-serif;
   margin: 3px;
   font-weight: bold;
+  width: max-content;
 `;
 const Character = styled.p`
   margin: 5px;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   font-weight: lighter;
+  width: auto;
 `;
 
 const TopCast = styled.h3`
@@ -72,7 +78,6 @@ const NavL = styled(NavLink)`
 `;
 const AllCredits = () => {
   const { id } = useParams();
-  console.log(useParams())
   const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
   const API_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b89afaf7bfa26140ce3d2bc5b5d295`;
   const { data, status } = useReactQuery(`${API_URL}`, "allcredits");

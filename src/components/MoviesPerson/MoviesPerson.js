@@ -61,7 +61,7 @@ const MoviesPerson = () => {
                 <Year>
                   {film.release_date
                     ? film.release_date
-                    : film.first_air_date || "-----"}{" "}
+                    : film.first_air_date || "-----"}
                 </Year>
                 <Movie>{film.title ? film.title : film.name}</Movie>
               </SectionMoviesPerson>

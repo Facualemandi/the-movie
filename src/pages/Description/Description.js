@@ -14,6 +14,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import Footer from "../../components/Footer/Footer";
 import ImageMovie from "../../components/ImageMovie/ImageMovie";
 import { useReactQuery } from "../../Hooks/useReactQuery";
+import Recomendations from "../../components/Recomendations/Recomendations";
 
 const SecondNav = styled.nav`
   height: auto;
@@ -109,7 +110,7 @@ const SectionImg = styled.section`
   @media (min-width: 1380px) {
     width: 1380px;
   }
-`;
+`; 
 
 const DivImagePoster = styled.div`
   width: 100%;
@@ -381,6 +382,7 @@ const Description = () => {
         <AllCredits />
         <Reviews />
         <ImageMovie />
+        <Recomendations/>
       </Main>
       <ContainerTrailer value={getTrailer}>
         <ClosedTrailer onClick={closedTrailer} />

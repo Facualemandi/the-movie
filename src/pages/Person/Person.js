@@ -9,6 +9,22 @@ import MovieCredits from "../../components/MovieCreditsPerson/MovieCredits";
 import Footer from "../../components/Footer/Footer";
 import MoviesPerson from "../../components/MoviesPerson/MoviesPerson";
 
+
+const Main = styled.main`
+width: 100vw;
+display: flex;
+flex-direction: column;
+margin: auto;
+@media (min-width: 780px){
+   width: 780px;
+}
+@media (min-width: 1080px){
+   width: 1080px;
+}
+@media (min-width: 1380px){
+   width: 1380px;
+}
+`
 const Img = styled.img`
   width: 200px;
   height: 250px;
@@ -99,7 +115,7 @@ const Person = () => {
 
   return (
     <>
-      <main>
+      <Main>
         <ContainerPerson>
           <SectionPictureRedes>
             <Img alt={data.name} src={`${URL_IMAGE}${data.profile_path}`} />
@@ -129,7 +145,7 @@ const Person = () => {
         <MovieCredits/>
         <MoviesPerson/>
         <Footer/>
-      </main>
+      </Main>
     </>
   );
 };
